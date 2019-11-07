@@ -1,0 +1,30 @@
+﻿<Window x:Class="CustomerDisplay_PD_220VFD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ports="clr-namespace:System.IO.Ports;assembly=System"
+        xmlns:local="clr-namespace:CustomerDisplay_PD_220VFD"
+        mc:Ignorable="d"
+        Title="Customer Display" Height="250" Width="300">
+    <Window.Resources>
+        <ObjectDataProvider ObjectType="{x:Type ports:SerialPort}" MethodName="GetPortNames" x:Key="portNames"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Foreground="#FF091AC9" FontSize="24">PD-220VFD</Label>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">COM Port</TextBlock>
+            <ComboBox Name="cbxCOMPort" Width="100" Margin="10 0" ItemsSource="{Binding Source={StaticResource portNames}}"></ComboBox>
+            <Button x:Name="btnConnect" Click="btnConnect_Click">Connect</Button>
+        </StackPanel>
+        <TextBox Grid.Row="2" TextWrapping="Wrap" MaxLength="40" Name="txtMessage" Width="280" Height="70" FontFamily="Courier New" FontSize="22" Text="12345678901234567890">
+        </TextBox>
+        <Button Grid.Row="3" Margin="10" Name="btnSend" Click="btnSend_Click">Send</Button>
+    </Grid>
+</Window>
