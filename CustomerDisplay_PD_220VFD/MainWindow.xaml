@@ -25,6 +25,10 @@
         </StackPanel>
         <TextBox Grid.Row="2" TextWrapping="Wrap" MaxLength="40" Name="txtMessage" Width="280" Height="70" FontFamily="Courier New" FontSize="22" Text="12345678901234567890">
         </TextBox>
-        <Button Grid.Row="3" Margin="10" Name="btnSend" Click="btnSend_Click">Send</Button>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button  Margin="10" Name="btnSend" Click="btnSend_Click">Send</Button>
+            <Button  Margin="10" Name="btnClear" Click="btnClear_Click">Clear</Button>
+        </StackPanel>
+        
     </Grid>
 </Window>

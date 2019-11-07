@@ -46,9 +46,24 @@ namespace CustomerDisplay_PD_220VFD
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            byte[] clearScreen = { 12 };
-            serialPort.Write(clearScreen,0,1);
-            serialPort.Write(txtMessage.Text);
+            if (serialPort.IsOpen)
+            {
+                ClearScreen();
+                serialPort.Write(txtMessage.Text);
+            }            
+        }
+        void ClearScreen()
+        {
+            if (serialPort.IsOpen)
+            {
+                byte[] clearScreen = { 12 };
+                serialPort.Write(clearScreen, 0, 1);
+            }                
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearScreen();
         }
     }
 }
